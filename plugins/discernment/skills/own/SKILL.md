@@ -23,6 +23,6 @@ AI lays out options and a recommendation. The decision and the accountability st
 
 4. Run a premortem on the call. Imagine it's six months (or a quarter) from now and this decision has clearly failed. Generate the 2-3 most plausible failure stories — what went wrong, in what order, and why it wasn't caught in time. For each, name the assumption in the call that, if wrong, made the failure inevitable. Show these to the user and use them to sharpen the watch list from question 5: the failure signals are the things they watch for.
 
-5. Write the `## Own` section of that file with: what only they can decide, what their taste sees, the judgment to encode, the call, the watch list (now drawn from the premortem), and the `Revisit by:` date — so `revisit-the-call` knows when to reopen it and score the call.
+5. Write the `## Own` section of that file with: what only they can decide, what their taste sees, the judgment to encode, the call, the watch list (now drawn from the premortem), and the `Revisit by:` date — so `revisit` knows when to reopen it and score the call.
 
 6. Return a standalone decision-capture block as a code block — the call, the reasoning in the user's words, the alternatives considered, the riskiest assumptions surfaced in the premortem, the watch list, and the date to revisit. Easy to paste into a P2 post, doc, or PR description.

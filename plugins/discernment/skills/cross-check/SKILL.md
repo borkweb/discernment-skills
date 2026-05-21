@@ -1,6 +1,6 @@
 ---
 name: cross-check
-description: Use when the user has an AI-generated answer, analysis, or recommendation they need to pressure-test before trusting. Triggered by "is this right", "pressure-test this", "I don't trust this answer", "validate this", or any moment where confidence and correctness need to be separated. Runs a validation rubric and an adversarial pass over the answer, then writes the Cross-check section of the decision's discernment-<slug>.md file. Use this for a standalone answer or recommendation; to audit a written plan, proposal, or roadmap against discernment already recorded in a discernment-<slug>.md file, use check-against-discernment.
+description: Use when the user has an AI-generated answer, analysis, or recommendation they need to pressure-test before trusting. Triggered by "is this right", "pressure-test this", "I don't trust this answer", "validate this", or any moment where confidence and correctness need to be separated. Runs a validation rubric and an adversarial pass over the answer, then writes the Cross-check section of the decision's discernment-<slug>.md file. Use this for a standalone answer or recommendation; to audit a written plan, proposal, or roadmap against discernment already recorded in a discernment-<slug>.md file, use analysis.
 ---
 
 # Cross-check the signal

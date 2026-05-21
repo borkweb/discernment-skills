@@ -1,5 +1,5 @@
 ---
-name: check-against-discernment
+name: analysis
 description: Use when the user has a plan, proposal, spec, P2 post, or roadmap and wants to audit it against the discernment they've already encoded for this domain. Triggered by "does this plan hold up", "audit this against my discernment", "check this proposal", "does this address what I care about", or any moment when a draft needs to be tested against the user's stated criteria. Reads the plan's discernment-<slug>.md file and surfaces gaps between what the plan addresses and what the user said counts. Use this when auditing a written plan or proposal against an existing discernment-<slug>.md file; to pressure-test a bare answer or recommendation with no recorded discernment, use cross-check.
 ---
 

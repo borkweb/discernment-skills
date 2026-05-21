@@ -1,6 +1,6 @@
 ---
-name: revisit-the-call
-description: Use when a decision you already made and recorded has had time to play out, and you want to score it against what actually happened. Triggered by "how did that call turn out", "revisit this decision", "was I right", "check back on this", "score that decision", or a discernment file's `Revisit by:` date coming due. Reads the call, watch list, and confidence calibration from a decision's discernment-<slug>.md, walks the watch-list signals against reality, renders a verdict, reads how well-calibrated you and the AI were, and appends a timestamped Revisit section. Use this to close the loop on a past call; to pressure-test a fresh AI answer use cross-check, to audit a written plan use check-against-discernment.
+name: revisit
+description: Use when a decision you already made and recorded has had time to play out, and you want to score it against what actually happened. Triggered by "how did that call turn out", "revisit this decision", "was I right", "check back on this", "score that decision", or a discernment file's `Revisit by:` date coming due. Reads the call, watch list, and confidence calibration from a decision's discernment-<slug>.md, walks the watch-list signals against reality, renders a verdict, reads how well-calibrated you and the AI were, and appends a timestamped Revisit section. Use this to close the loop on a past call; to pressure-test a fresh AI answer use cross-check, to audit a written plan use analysis.
 ---
 
 # Revisit the call
