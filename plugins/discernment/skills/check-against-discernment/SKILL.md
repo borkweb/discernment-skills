@@ -1,6 +1,6 @@
 ---
 name: check-against-discernment
-description: Use when the user has a plan, proposal, spec, P2 post, or roadmap and wants to audit it against the discernment they've already encoded for this domain. Triggered by "does this plan hold up", "audit this against my discernment", "check this proposal", "does this address what I care about", or any moment when a draft needs to be tested against the user's stated criteria. Reads the plan's discernment-<slug>.md file and surfaces gaps between what the plan addresses and what the user said counts. Use this when auditing a written plan or proposal against an existing discernment-<slug>.md file; to pressure-test a bare answer or recommendation with no recorded discernment, use cross-check-the-signal.
+description: Use when the user has a plan, proposal, spec, P2 post, or roadmap and wants to audit it against the discernment they've already encoded for this domain. Triggered by "does this plan hold up", "audit this against my discernment", "check this proposal", "does this address what I care about", or any moment when a draft needs to be tested against the user's stated criteria. Reads the plan's discernment-<slug>.md file and surfaces gaps between what the plan addresses and what the user said counts. Use this when auditing a written plan or proposal against an existing discernment-<slug>.md file; to pressure-test a bare answer or recommendation with no recorded discernment, use cross-check.
 ---
 
 # Check against discernment
@@ -14,7 +14,7 @@ The user has already encoded what a good answer looks like for this domain — c
    2. Otherwise, ask which discernment file to use — and list the `discernment-*.md` files in the working directory so they can pick one. Ask even when only one file exists; don't auto-select it.
    3. Only if the user still doesn't name one (e.g. "you pick"), fall back to inference: glob `discernment-*.md`; if exactly one exists, use it; if several, match the one whose decision fits the plan under review, and if none clearly fits, return to step 2 rather than guessing.
 
-   Treat the chosen discernment as insufficient to audit against if it doesn't exist, or if any of the three sections — Aim, Cross-check, Own — is empty or placeholder-only. If so, stop, name which section is missing and which skill fills it (`aim-the-question`, `cross-check-the-signal`, `own-the-call`), and don't run an audit against a hollow file.
+   Treat the chosen discernment as insufficient to audit against if it doesn't exist, or if any of the three sections — Aim, Cross-check, Own — is empty or placeholder-only. If so, stop, name which section is missing and which skill fills it (`aim`, `cross-check`, `own`), and don't run an audit against a hollow file.
 
 2. Ask for the plan, proposal, or draft to audit. Get the actual text or file path.
 

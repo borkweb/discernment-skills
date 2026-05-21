@@ -1,35 +1,36 @@
 # Discernment Skills
 
-A Claude Code [plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces) providing four composable skills for **discernment** — the work of deciding *well* when an AI is happy to hand you a confident answer for everything.
+A Claude Code [plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces) providing five composable skills for **discernment** — the work of deciding *well* when an AI is happy to hand you a confident answer for everything.
 
-The skills don't make the call for you. They sharpen the question before you prompt, separate confidence from correctness after you get an answer, keep the decision and the accountability with you, and let you audit a later plan against the judgment you encoded along the way.
+The skills don't make the call for you. They sharpen the question before you prompt, separate confidence from correctness after you get an answer, keep the decision and the accountability with you, let you audit a later plan against the judgment you encoded, and score the call once it has played out so the judgment gets corrected by reality.
 
 ## The shape
 
-Three single-purpose skills compose by writing into a per-decision file named after the decision. A fourth audits any plan against it.
+Three single-purpose skills compose by writing into a per-decision file named after the decision. `revisit-the-call` reopens that file later to score the call against what happened; `check-against-discernment` audits any plan against it.
 
 ```
-aim-the-question        →  writes ## Aim          ┐
-cross-check-the-signal  →  writes ## Cross-check  ├─→  discernment-<slug>.md
-own-the-call            →  writes ## Own          ┘                  │
-                                                                     ↓
-                                          check-against-discernment ─→ audits a plan
+aim               →  writes ## Aim          ┐
+cross-check       →  writes ## Cross-check  ├─→  discernment-<slug>.md
+own               →  writes ## Own          ┘            │
+                                                         ├─→  revisit-the-call          ─→  scores the call later, writes ## Revisit
+                                                         └─→  check-against-discernment  ─→  audits a plan against it
 ```
 
-Each of the first three is independently useful — run `aim-the-question` on a decision and stop there if that's all you need. They compose because they share one file format.
+Each of the first three is independently useful — run `aim` on a decision and stop there if that's all you need. They compose because they share one file format.
 
-## The four skills
+## The five skills
 
-| Skill | Use when | Writes | Pattern |
-|-------|----------|--------|---------|
-| **`aim-the-question`** | Starting a decision or framing a question for AI | `## Aim` | trusted sources / grounding |
-| **`cross-check-the-signal`** | You have an AI answer you need to pressure-test | `## Cross-check` | encoded reasoning + adversarial pushback |
-| **`own-the-call`** | About to commit to a decision | `## Own` | human-in-the-loop + decision capture |
-| **`check-against-discernment`** | You have a plan/proposal to audit against what you already encoded | reads all sections | encoded reasoning |
+| Skill | Use when | Writes |
+|-------|----------|--------|
+| **`aim`** | Starting a decision or framing a question for AI | `## Aim` |
+| **`cross-check`** | You have an AI answer you need to pressure-test | `## Cross-check` |
+| **`own`** | About to commit to a decision | `## Own` |
+| **`revisit-the-call`** | A past call has had time to play out and you want to score it | `## Revisit` |
+| **`check-against-discernment`** | You have a plan/proposal to audit against what you already encoded | reads all sections |
 
 ## The decision file
 
-Each decision gets its own file, named after it: `discernment-<slug>.md` (e.g. `discernment-pricing.md`, `discernment-atlas-hardening.md`). `aim-the-question` derives the slug from the decision and creates the file from this template; the other skills locate it by globbing `discernment-*.md` and append to it.
+Each decision gets its own file, named after it: `discernment-<slug>.md` (e.g. `discernment-pricing.md`, `discernment-atlas-hardening.md`). `aim` derives the slug from the decision and creates the file from this template; the other skills locate it by globbing `discernment-*.md` and append to it.
 
 ```markdown
 # Discernment for: {decision name}
@@ -53,7 +54,10 @@ Each decision gets its own file, named after it: `discernment-<slug>.md` (e.g. `
 - Judgment to encode for next time:
 - The call:
 - What I'd watch to know I was wrong:
+- Revisit by:
 ```
+
+`revisit-the-call` later appends a timestamped `## Revisit — YYYY-MM-DD` section each time you score the call against what happened; these stack, so one decision can carry several.
 
 **Multiple parallel decisions:** each lives in its own `discernment-<slug>.md`, so they don't collide. When more than one exists in a directory, the reading skills ask which decision you mean (or you can name the file).
 
@@ -71,19 +75,21 @@ Each decision gets its own file, named after it: `discernment-<slug>.md` (e.g. `
 
 Once installed, the skills are namespaced under the plugin:
 
-- `/discernment:aim-the-question`
-- `/discernment:cross-check-the-signal`
-- `/discernment:own-the-call`
+- `/discernment:aim`
+- `/discernment:cross-check`
+- `/discernment:own`
+- `/discernment:revisit-the-call`
 - `/discernment:check-against-discernment`
 
 They also trigger automatically when your request matches their description (e.g. "help me think through whether to…", "is this answer right?", "I'm going to call it").
 
 ## A full pass
 
-1. **Aim** — `aim-the-question` walks you through the real decision, your criteria, your signal vs. noise sources, and the question only you would ask. It hands back a sharpened prompt and seeds the decision's `discernment-<slug>.md`.
-2. **Cross-check** — paste an AI answer into `cross-check-the-signal`. It scores the answer against your own criteria and argues the strongest case against it, side by side.
-3. **Own** — `own-the-call` stops before commitment, surfaces what's on the table, and captures the call, the reasoning in your words, and the watch list that'll tell future-you if you were wrong.
-4. **Audit later** — next week, run `check-against-discernment` on a plan, proposal, or P2 post. It returns a gap report: what you encoded vs. what the plan addresses vs. what's missing.
+1. **Aim** — `aim` walks you through the real decision, your criteria, your signal vs. noise sources, and the question only you would ask. It hands back a sharpened prompt and seeds the decision's `discernment-<slug>.md`.
+2. **Cross-check** — paste an AI answer into `cross-check`. It scores the answer against your own criteria and argues the strongest case against it, side by side.
+3. **Own** — `own` stops before commitment, surfaces what's on the table, and captures the call, the reasoning in your words, the watch list that'll tell future-you if you were wrong, and a `Revisit by:` date.
+4. **Revisit** — when that date comes due, run `revisit-the-call`. It walks your watch list against what actually happened, renders a verdict, reads how well-calibrated you and the AI were, and appends a `## Revisit` section so the lesson sticks.
+5. **Audit anytime** — run `check-against-discernment` on a plan, proposal, or P2 post. It returns a gap report: what you encoded vs. what the plan addresses vs. what's missing.
 
 ## Repository layout
 
@@ -96,9 +102,10 @@ discernment-skills/
 │       ├── .claude-plugin/
 │       │   └── plugin.json           # plugin manifest
 │       └── skills/
-│           ├── aim-the-question/SKILL.md
-│           ├── cross-check-the-signal/SKILL.md
-│           ├── own-the-call/SKILL.md
+│           ├── aim/SKILL.md
+│           ├── cross-check/SKILL.md
+│           ├── own/SKILL.md
+│           ├── revisit-the-call/SKILL.md
 │           └── check-against-discernment/SKILL.md
 ├── README.md
 └── LICENSE

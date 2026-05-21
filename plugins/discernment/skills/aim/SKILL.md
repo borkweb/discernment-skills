@@ -1,5 +1,5 @@
 ---
-name: aim-the-question
+name: aim
 description: Use when the user is starting a new decision, framing a question for AI, or about to prompt for analysis on a real call. Triggered by "I'm trying to decide", "help me think through", "I want to ask AI about X", or any request to analyze something where the question hasn't been sharpened yet. Produces a sharpened question in the user's own voice, an explicit signal/noise source list, and writes the Aim section of a per-decision discernment-<slug>.md file named after the decision.
 ---
 
@@ -23,7 +23,11 @@ Before AI tries to answer anything, lock down what the user is actually asking a
 
 5. Write the `## Aim` section of `discernment-<slug>.md` using the user's exact words.
 
-6. Return the sharpened question as a standalone code block, ready to paste into any AI tool.
+6. Ask the user how they want to use the sharpened question: should the agent take it from here and work the decision now, or hand it back as text to paste into another AI tool? Wait for the answer.
+
+7. Then, depending on the answer:
+   - **Hand it back as text** — return the sharpened question as a standalone code block, ready to paste into any AI tool. Stop there.
+   - **Work the decision now** — answer it using the sharpened question together with the signal sources and noise-to-exclude recorded in `## Aim` (lean on the signal, ignore the noise). Record the answer in the file under `## Cross-check` → `### AI recommendation under test` (create the `## Cross-check` heading if it doesn't exist yet) — that's where `cross-check` and `own` look for the AI answer, not `## Own`, which stays reserved for the user's own call. Then remind the user this is an AI answer like any other and offer to run `cross-check` on it to pressure-test it before they trust it.
 
 ## File template (used when the decision's `discernment-<slug>.md` doesn't exist yet)
 
@@ -49,4 +53,5 @@ Before AI tries to answer anything, lock down what the user is actually asking a
 - Judgment to encode for next time:
 - The call:
 - What I'd watch to know I was wrong:
+- Revisit by:
 ```
