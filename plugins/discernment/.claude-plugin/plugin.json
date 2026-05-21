@@ -1,0 +1,21 @@
+{
+  "name": "discernment",
+  "displayName": "Discernment",
+  "version": "0.1.0",
+  "description": "Four composable skills for sharpening decisions, validating AI output, owning the call, and auditing plans against the discernment you've already encoded. Each writes into a per-decision discernment-<slug>.md file the others read.",
+  "author": {
+    "name": "Matthew Batchelder",
+    "email": "borkweb@gmail.com"
+  },
+  "homepage": "https://github.com/borkweb/discernment-skills",
+  "repository": "https://github.com/borkweb/discernment-skills",
+  "license": "MIT",
+  "keywords": [
+    "discernment",
+    "decision-making",
+    "judgment",
+    "validation",
+    "ai-grounding",
+    "human-in-the-loop"
+  ]
+}
