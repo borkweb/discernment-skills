@@ -63,5 +63,4 @@ Apply these to every field in step 3:
 - Judgment to encode for next time:
 - The call:
 - What I'd watch to know I was wrong:
-- Revisit by:
 ```

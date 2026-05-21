@@ -1,8 +1,8 @@
 {
   "name": "discernment",
   "displayName": "Discernment",
-  "version": "0.2.0",
-  "description": "Five composable skills for sharpening decisions, validating AI output, owning the call, scoring it once it plays out, and auditing plans against the discernment you've already encoded. Each writes into a per-decision discernment-<slug>.md file the others read.",
+  "version": "0.3.0",
+  "description": "Three composable skills for sharpening the question before you prompt, validating AI output, and owning the call. Each writes into a per-decision discernment-<slug>.md file the others read.",
   "author": {
     "name": "Matthew Batchelder",
     "email": "borkweb@gmail.com"

@@ -1,6 +1,6 @@
 {
   "name": "discernment-skills",
-  "description": "Skills for discernment — aim a question, cross-check the signal, own the call, score it once it plays out, then audit a plan against the judgment you've encoded.",
+  "description": "Skills for discernment — aim a question, cross-check the signal, own the call.",
   "owner": {
     "name": "Matthew Batchelder",
     "email": "borkweb@gmail.com"
@@ -9,7 +9,7 @@
     {
       "name": "discernment",
       "source": "./plugins/discernment",
-      "description": "Five composable skills for sharpening decisions, validating AI output, owning the call, scoring it once it plays out, and auditing plans against encoded discernment."
+      "description": "Three composable skills for sharpening the question before you prompt, validating AI output, and owning the call."
     }
   ]
 }
